@@ -1,0 +1,35 @@
+function = "bin.critical.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 0.0004990298188652589
+weight_decay = 0.6018221954422232
+
+[base_config.data]
+path = "data/twitch-views"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+cat_policy = "one-hot"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 9
+d_hidden = 320
+dropout = 0.1
+log2_hidden_dim_multiplier = 2
+normalization = "Identity"
+log2_n_heads = 2
+sep = true

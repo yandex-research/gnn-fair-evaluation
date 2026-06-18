@@ -1,0 +1,51 @@
+{
+  "function": "bin.ensemble.main",
+  "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "ensemble_size": 5
+  },
+  "reports": [
+    {
+      "single-model-info": {
+        "function": "bin.critical.main",
+        "config": {
+          "data": {
+            "path": "data/avazu-ctr"
+          }
+        }
+      },
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "prediction_type": "labels",
+      "metrics": {
+        "train": {
+          "rmse": 0.12731532733345266,
+          "mae": 0.08232657611370087,
+          "r2": 0.4482659697532654,
+          "score": 0.4482659697532654
+        },
+        "val": {
+          "rmse": 0.1392838313338752,
+          "mae": 0.08957502245903015,
+          "r2": 0.31995606422424316,
+          "score": 0.31995606422424316
+        },
+        "test": {
+          "rmse": 0.13908584350581046,
+          "mae": 0.0890849381685257,
+          "r2": 0.3246226906776428,
+          "score": 0.3246226906776428
+        }
+      }
+    }
+  ],
+  "time": 0.013428501784801483
+}

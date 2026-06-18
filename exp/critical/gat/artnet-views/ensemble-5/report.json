@@ -1,0 +1,51 @@
+{
+  "function": "bin.ensemble.main",
+  "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "ensemble_size": 5
+  },
+  "reports": [
+    {
+      "single-model-info": {
+        "function": "bin.critical.main",
+        "config": {
+          "data": {
+            "path": "data/artnet-views"
+          }
+        }
+      },
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "prediction_type": "labels",
+      "metrics": {
+        "train": {
+          "rmse": 0.08622247414774276,
+          "mae": 0.06732706725597382,
+          "r2": 0.9974713325500488,
+          "score": 0.9974713325500488
+        },
+        "val": {
+          "rmse": 1.102449209033752,
+          "mae": 0.8741432428359985,
+          "r2": 0.5836449861526489,
+          "score": 0.5836449861526489
+        },
+        "test": {
+          "rmse": 1.1071980568094235,
+          "mae": 0.8754680752754211,
+          "r2": 0.5792611837387085,
+          "score": 0.5792611837387085
+        }
+      }
+    }
+  ],
+  "time": 0.012314300052821636
+}

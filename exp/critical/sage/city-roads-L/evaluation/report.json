@@ -1,0 +1,399 @@
+{
+  "function": "bin.evaluate.main",
+  "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "function": "bin.critical.main",
+    "n_seeds": 5,
+    "base_config": {
+      "n_steps": 3000,
+      "patience": 1000,
+      "save_checkpoint": false,
+      "amp_dtype": "bfloat16",
+      "optimizer": {
+        "type": "AdamW",
+        "lr": 0.0004949713652134788,
+        "weight_decay": 0.00023728668723209514
+      },
+      "data": {
+        "path": "data/city-roads-L",
+        "setting": "transductive",
+        "internal_split_name": "RL"
+      },
+      "transform": {
+        "seed": 0,
+        "labels": true,
+        "features": {
+          "num_policy": "quantile-normal",
+          "cat_policy": "one-hot",
+          "impute_first": true
+        }
+      },
+      "model": {
+        "backbone": {
+          "conv": "sage",
+          "n_blocks": 6,
+          "d_hidden": 416,
+          "dropout": 0.1,
+          "log2_hidden_dim_multiplier": 2,
+          "normalization": "BatchNorm"
+        }
+      }
+    }
+  },
+  "reports": [
+    {
+      "function": "bin.critical.main",
+      "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+      "gpus": [
+        "NVIDIA A100-SXM4-80GB"
+      ],
+      "config": {
+        "seed": 0,
+        "n_steps": 3000,
+        "patience": 1000,
+        "save_checkpoint": false,
+        "amp_dtype": "bfloat16",
+        "optimizer": {
+          "type": "AdamW",
+          "lr": 0.0004949713652134788,
+          "weight_decay": 0.00023728668723209514
+        },
+        "data": {
+          "path": "data/city-roads-L",
+          "setting": "transductive",
+          "internal_split_name": "RL"
+        },
+        "transform": {
+          "seed": 0,
+          "labels": true,
+          "features": {
+            "num_policy": "quantile-normal",
+            "cat_policy": "one-hot",
+            "impute_first": true
+          }
+        },
+        "model": {
+          "backbone": {
+            "conv": "sage",
+            "n_blocks": 6,
+            "d_hidden": 416,
+            "dropout": 0.1,
+            "log2_hidden_dim_multiplier": 2,
+            "normalization": "BatchNorm"
+          }
+        }
+      },
+      "n_parameters": 12564865,
+      "prediction_type": "labels",
+      "best_step": 416,
+      "metrics": {
+        "train": {
+          "rmse": 2.2776250387428028,
+          "mae": 1.7631510496139526,
+          "r2": 0.7223281860351562,
+          "score": 0.7223281860351562
+        },
+        "val": {
+          "rmse": 2.9090280688607875,
+          "mae": 2.183168649673462,
+          "r2": 0.5398309230804443,
+          "score": 0.5398309230804443
+        },
+        "test": {
+          "rmse": 2.9321852958904278,
+          "mae": 2.191566228866577,
+          "r2": 0.5398611426353455,
+          "score": 0.5398611426353455
+        }
+      },
+      "training_max_memory_allocated_bytes": 10907449344,
+      "time": 228.80040782224387,
+      "inference_max_memory_allocated_bytes": 1932681728,
+      "inference_time": 0.053074882831424475
+    },
+    {
+      "function": "bin.critical.main",
+      "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+      "gpus": [
+        "NVIDIA A100-SXM4-80GB"
+      ],
+      "config": {
+        "seed": 1,
+        "n_steps": 3000,
+        "patience": 1000,
+        "save_checkpoint": false,
+        "amp_dtype": "bfloat16",
+        "optimizer": {
+          "type": "AdamW",
+          "lr": 0.0004949713652134788,
+          "weight_decay": 0.00023728668723209514
+        },
+        "data": {
+          "path": "data/city-roads-L",
+          "setting": "transductive",
+          "internal_split_name": "RL"
+        },
+        "transform": {
+          "seed": 0,
+          "labels": true,
+          "features": {
+            "num_policy": "quantile-normal",
+            "cat_policy": "one-hot",
+            "impute_first": true
+          }
+        },
+        "model": {
+          "backbone": {
+            "conv": "sage",
+            "n_blocks": 6,
+            "d_hidden": 416,
+            "dropout": 0.1,
+            "log2_hidden_dim_multiplier": 2,
+            "normalization": "BatchNorm"
+          }
+        }
+      },
+      "n_parameters": 12564865,
+      "prediction_type": "labels",
+      "best_step": 430,
+      "metrics": {
+        "train": {
+          "rmse": 2.3045927383855345,
+          "mae": 1.7799098491668701,
+          "r2": 0.7157138586044312,
+          "score": 0.7157138586044312
+        },
+        "val": {
+          "rmse": 2.93078104590952,
+          "mae": 2.1984639167785645,
+          "r2": 0.5329231023788452,
+          "score": 0.5329231023788452
+        },
+        "test": {
+          "rmse": 2.9557118867657515,
+          "mae": 2.2024035453796387,
+          "r2": 0.5324475765228271,
+          "score": 0.5324475765228271
+        }
+      },
+      "training_max_memory_allocated_bytes": 10908470784,
+      "time": 232.5544221769087,
+      "inference_max_memory_allocated_bytes": 1934066176,
+      "inference_time": 0.05427861912176013
+    },
+    {
+      "function": "bin.critical.main",
+      "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+      "gpus": [
+        "NVIDIA A100-SXM4-80GB"
+      ],
+      "config": {
+        "seed": 2,
+        "n_steps": 3000,
+        "patience": 1000,
+        "save_checkpoint": false,
+        "amp_dtype": "bfloat16",
+        "optimizer": {
+          "type": "AdamW",
+          "lr": 0.0004949713652134788,
+          "weight_decay": 0.00023728668723209514
+        },
+        "data": {
+          "path": "data/city-roads-L",
+          "setting": "transductive",
+          "internal_split_name": "RL"
+        },
+        "transform": {
+          "seed": 0,
+          "labels": true,
+          "features": {
+            "num_policy": "quantile-normal",
+            "cat_policy": "one-hot",
+            "impute_first": true
+          }
+        },
+        "model": {
+          "backbone": {
+            "conv": "sage",
+            "n_blocks": 6,
+            "d_hidden": 416,
+            "dropout": 0.1,
+            "log2_hidden_dim_multiplier": 2,
+            "normalization": "BatchNorm"
+          }
+        }
+      },
+      "n_parameters": 12564865,
+      "prediction_type": "labels",
+      "best_step": 230,
+      "metrics": {
+        "train": {
+          "rmse": 2.5994367649658554,
+          "mae": 2.006272792816162,
+          "r2": 0.6383188962936401,
+          "score": 0.6383188962936401
+        },
+        "val": {
+          "rmse": 2.9587009004581017,
+          "mae": 2.230417251586914,
+          "r2": 0.5239815711975098,
+          "score": 0.5239815711975098
+        },
+        "test": {
+          "rmse": 2.9586889742708964,
+          "mae": 2.231518268585205,
+          "r2": 0.5315052270889282,
+          "score": 0.5315052270889282
+        }
+      },
+      "training_max_memory_allocated_bytes": 10908470784,
+      "time": 198.37270834483206,
+      "inference_max_memory_allocated_bytes": 1934066176,
+      "inference_time": 0.0520336190238595
+    },
+    {
+      "function": "bin.critical.main",
+      "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+      "gpus": [
+        "NVIDIA A100-SXM4-80GB"
+      ],
+      "config": {
+        "seed": 3,
+        "n_steps": 3000,
+        "patience": 1000,
+        "save_checkpoint": false,
+        "amp_dtype": "bfloat16",
+        "optimizer": {
+          "type": "AdamW",
+          "lr": 0.0004949713652134788,
+          "weight_decay": 0.00023728668723209514
+        },
+        "data": {
+          "path": "data/city-roads-L",
+          "setting": "transductive",
+          "internal_split_name": "RL"
+        },
+        "transform": {
+          "seed": 0,
+          "labels": true,
+          "features": {
+            "num_policy": "quantile-normal",
+            "cat_policy": "one-hot",
+            "impute_first": true
+          }
+        },
+        "model": {
+          "backbone": {
+            "conv": "sage",
+            "n_blocks": 6,
+            "d_hidden": 416,
+            "dropout": 0.1,
+            "log2_hidden_dim_multiplier": 2,
+            "normalization": "BatchNorm"
+          }
+        }
+      },
+      "n_parameters": 12564865,
+      "prediction_type": "labels",
+      "best_step": 357,
+      "metrics": {
+        "train": {
+          "rmse": 2.409324960151876,
+          "mae": 1.8679943084716797,
+          "r2": 0.6892879009246826,
+          "score": 0.6892879009246826
+        },
+        "val": {
+          "rmse": 2.9576296081262012,
+          "mae": 2.2175652980804443,
+          "r2": 0.5243262052536011,
+          "score": 0.5243262052536011
+        },
+        "test": {
+          "rmse": 2.9672357813405847,
+          "mae": 2.220827579498291,
+          "r2": 0.5287946462631226,
+          "score": 0.5287946462631226
+        }
+      },
+      "training_max_memory_allocated_bytes": 10908470784,
+      "time": 221.5027225781232,
+      "inference_max_memory_allocated_bytes": 1934066176,
+      "inference_time": 0.058527525048702955
+    },
+    {
+      "function": "bin.critical.main",
+      "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+      "gpus": [
+        "NVIDIA A100-SXM4-80GB"
+      ],
+      "config": {
+        "seed": 4,
+        "n_steps": 3000,
+        "patience": 1000,
+        "save_checkpoint": false,
+        "amp_dtype": "bfloat16",
+        "optimizer": {
+          "type": "AdamW",
+          "lr": 0.0004949713652134788,
+          "weight_decay": 0.00023728668723209514
+        },
+        "data": {
+          "path": "data/city-roads-L",
+          "setting": "transductive",
+          "internal_split_name": "RL"
+        },
+        "transform": {
+          "seed": 0,
+          "labels": true,
+          "features": {
+            "num_policy": "quantile-normal",
+            "cat_policy": "one-hot",
+            "impute_first": true
+          }
+        },
+        "model": {
+          "backbone": {
+            "conv": "sage",
+            "n_blocks": 6,
+            "d_hidden": 416,
+            "dropout": 0.1,
+            "log2_hidden_dim_multiplier": 2,
+            "normalization": "BatchNorm"
+          }
+        }
+      },
+      "n_parameters": 12564865,
+      "prediction_type": "labels",
+      "best_step": 271,
+      "metrics": {
+        "train": {
+          "rmse": 2.476232368294779,
+          "mae": 1.9134376049041748,
+          "r2": 0.6717913150787354,
+          "score": 0.6717913150787354
+        },
+        "val": {
+          "rmse": 2.9516181128751953,
+          "mae": 2.22257137298584,
+          "r2": 0.5262578725814819,
+          "score": 0.5262578725814819
+        },
+        "test": {
+          "rmse": 2.9538875180719706,
+          "mae": 2.219144582748413,
+          "r2": 0.5330246090888977,
+          "score": 0.5330246090888977
+        }
+      },
+      "training_max_memory_allocated_bytes": 10908470784,
+      "time": 208.69062999403104,
+      "inference_max_memory_allocated_bytes": 1934066176,
+      "inference_time": 0.05825408501550555
+    }
+  ],
+  "time": 1102.11580800917
+}

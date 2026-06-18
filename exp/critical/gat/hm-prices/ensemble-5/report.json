@@ -1,0 +1,51 @@
+{
+  "function": "bin.ensemble.main",
+  "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "ensemble_size": 5
+  },
+  "reports": [
+    {
+      "single-model-info": {
+        "function": "bin.critical.main",
+        "config": {
+          "data": {
+            "path": "data/hm-prices"
+          }
+        }
+      },
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "prediction_type": "labels",
+      "metrics": {
+        "train": {
+          "rmse": 0.0005869070796497355,
+          "mae": 0.00048294663429260254,
+          "r2": 0.9992376565933228,
+          "score": 0.9992376565933228
+        },
+        "val": {
+          "rmse": 0.01026165511901961,
+          "mae": 0.006123543716967106,
+          "r2": 0.7649511694908142,
+          "score": 0.7649511694908142
+        },
+        "test": {
+          "rmse": 0.010294864728630957,
+          "mae": 0.005967674311250448,
+          "r2": 0.7695468068122864,
+          "score": 0.7695468068122864
+        }
+      }
+    }
+  ],
+  "time": 0.014090867945924401
+}

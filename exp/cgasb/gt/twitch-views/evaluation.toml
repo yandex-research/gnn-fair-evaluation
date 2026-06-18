@@ -1,0 +1,35 @@
+function = "bin.cgasb.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 0.006490667174879375
+weight_decay = 0.00019237305096546508
+
+[base_config.data]
+path = "data/twitch-views"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+cat_policy = "one-hot"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gt"
+n_blocks = 1
+d_hidden = 96
+dropout = 0.45
+pre_linear = true
+res = false
+norm = "ln"
+log2_n_heads = 2

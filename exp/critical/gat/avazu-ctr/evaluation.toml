@@ -1,0 +1,35 @@
+function = "bin.critical.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 3.998034868817139e-05
+weight_decay = 0.7881873532231459
+
+[base_config.data]
+path = "data/avazu-ctr"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+frac_policy = "quantile-normal"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 9
+d_hidden = 352
+dropout = 0.15000000000000002
+log2_hidden_dim_multiplier = 1
+normalization = "BatchNorm"
+log2_n_heads = 2
+sep = true

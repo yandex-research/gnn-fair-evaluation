@@ -1,0 +1,37 @@
+function = "bin.critical.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+amp_dtype = "bfloat16"
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 3.053693635806063e-05
+weight_decay = 0.006466327946875489
+
+[base_config.data]
+path = "data/city-reviews"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = false
+
+[base_config.transform.features]
+num_policy = "quantile-normal"
+cat_policy = "one-hot"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 10
+d_hidden = 544
+dropout = 0.15000000000000002
+log2_hidden_dim_multiplier = 0
+normalization = "LayerNorm"
+log2_n_heads = 1
+sep = true

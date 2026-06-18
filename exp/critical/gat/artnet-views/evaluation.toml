@@ -1,0 +1,37 @@
+function = "bin.critical.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+amp_dtype = "bfloat16"
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 0.0006347731555810245
+weight_decay = 0.00036128565155881605
+
+[base_config.data]
+path = "data/artnet-views"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+cat_policy = "one-hot"
+frac_policy = "quantile-normal"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 3
+d_hidden = 288
+dropout = 0.05
+log2_hidden_dim_multiplier = 1
+normalization = "BatchNorm"
+log2_n_heads = 1
+sep = true

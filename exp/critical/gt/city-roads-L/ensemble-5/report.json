@@ -1,0 +1,51 @@
+{
+  "function": "bin.ensemble.main",
+  "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "ensemble_size": 5
+  },
+  "reports": [
+    {
+      "single-model-info": {
+        "function": "bin.critical.main",
+        "config": {
+          "data": {
+            "path": "data/city-roads-L"
+          }
+        }
+      },
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "prediction_type": "labels",
+      "metrics": {
+        "train": {
+          "rmse": 2.47433217218985,
+          "mae": 1.9010207653045654,
+          "r2": 0.6722947955131531,
+          "score": 0.6722947955131531
+        },
+        "val": {
+          "rmse": 2.90086029051898,
+          "mae": 2.1641337871551514,
+          "r2": 0.5424113273620605,
+          "score": 0.5424113273620605
+        },
+        "test": {
+          "rmse": 2.8980622164285097,
+          "mae": 2.168703317642212,
+          "r2": 0.5505084991455078,
+          "score": 0.5505084991455078
+        }
+      }
+    }
+  ],
+  "time": 0.019220594316720963
+}

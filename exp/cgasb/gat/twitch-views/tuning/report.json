@@ -1,0 +1,176 @@
+{
+  "function": "bin.tune.main",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "seed": 0,
+    "function": "bin.cgasb.main",
+    "n_trials": 100,
+    "sampler": {
+      "n_startup_trials": 25
+    },
+    "space": {
+      "seed": 0,
+      "n_steps": 3000,
+      "patience": 1000,
+      "save_checkpoint": false,
+      "optimizer": {
+        "type": "AdamW",
+        "lr": [
+          "_tune_",
+          "loguniform",
+          3e-05,
+          0.01
+        ],
+        "weight_decay": [
+          "_tune_",
+          "loguniform",
+          0.0001,
+          1.0
+        ]
+      },
+      "data": {
+        "path": "data/twitch-views",
+        "setting": "transductive",
+        "internal_split_name": "RL"
+      },
+      "transform": {
+        "seed": 0,
+        "labels": true,
+        "features": {
+          "cat_policy": "one-hot",
+          "impute_first": true
+        }
+      },
+      "model": {
+        "backbone": {
+          "conv": "gat",
+          "n_blocks": [
+            "_tune_",
+            "int",
+            1,
+            10,
+            1
+          ],
+          "d_hidden": [
+            "_tune_",
+            "int",
+            96,
+            768,
+            32
+          ],
+          "dropout": [
+            "_tune_",
+            "discrete_uniform",
+            0.0,
+            0.5,
+            0.05
+          ],
+          "pre_linear": [
+            "_tune_",
+            "categorical",
+            [
+              false,
+              true
+            ]
+          ],
+          "res": [
+            "_tune_",
+            "categorical",
+            [
+              false,
+              true
+            ]
+          ],
+          "norm": [
+            "_tune_",
+            "categorical",
+            [
+              "none",
+              "ln",
+              "bn"
+            ]
+          ],
+          "log2_n_heads": [
+            "_tune_",
+            "int",
+            1,
+            3,
+            1
+          ]
+        }
+      }
+    }
+  },
+  "best": {
+    "function": "bin.cgasb.main",
+    "gpus": [
+      "NVIDIA A100-SXM4-80GB"
+    ],
+    "config": {
+      "seed": 0,
+      "n_steps": 3000,
+      "patience": 1000,
+      "save_checkpoint": false,
+      "optimizer": {
+        "type": "AdamW",
+        "lr": 0.00326504443687612,
+        "weight_decay": 0.018897439101113155
+      },
+      "data": {
+        "path": "data/twitch-views",
+        "setting": "transductive",
+        "internal_split_name": "RL"
+      },
+      "transform": {
+        "seed": 0,
+        "labels": true,
+        "features": {
+          "cat_policy": "one-hot",
+          "impute_first": true
+        }
+      },
+      "model": {
+        "backbone": {
+          "conv": "gat",
+          "n_blocks": 5,
+          "d_hidden": 128,
+          "dropout": 0.35000000000000003,
+          "pre_linear": true,
+          "res": true,
+          "norm": "none",
+          "log2_n_heads": 3
+        }
+      }
+    },
+    "n_parameters": 171649,
+    "prediction_type": "labels",
+    "best_step": 2813,
+    "metrics": {
+      "train": {
+        "rmse": 1.0780655111956061,
+        "mae": 0.8392128348350525,
+        "r2": 0.8605536818504333,
+        "score": 0.8605536818504333
+      },
+      "val": {
+        "rmse": 1.483838998492308,
+        "mae": 1.1259777545928955,
+        "r2": 0.7386947870254517,
+        "score": 0.7386947870254517
+      },
+      "test": {
+        "rmse": 1.4770642593651588,
+        "mae": 1.123581886291504,
+        "r2": 0.741918683052063,
+        "score": 0.741918683052063
+      }
+    },
+    "time": 3182.218594948994,
+    "trial_id": 12,
+    "tuning_time": "1:47:53.302546"
+  },
+  "time": 28787.563405202935,
+  "n_completed_trials": 96
+}

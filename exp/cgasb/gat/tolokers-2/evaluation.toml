@@ -1,0 +1,37 @@
+function = "bin.cgasb.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+amp_dtype = "bfloat16"
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 4.1498090541635775e-05
+weight_decay = 0.0008044839750410714
+
+[base_config.data]
+path = "data/tolokers-2"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = false
+
+[base_config.transform.features]
+num_policy = "quantile-normal"
+cat_policy = "one-hot"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 5
+d_hidden = 192
+dropout = 0.25
+pre_linear = true
+res = true
+norm = "ln"
+log2_n_heads = 2

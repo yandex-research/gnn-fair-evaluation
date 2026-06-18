@@ -1,0 +1,37 @@
+function = "bin.cgasb.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+amp_dtype = "bfloat16"
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 0.0008212360640813455
+weight_decay = 0.7668027036584728
+
+[base_config.data]
+path = "data/city-roads-L"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+num_policy = "quantile-normal"
+cat_policy = "one-hot"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gt"
+n_blocks = 10
+d_hidden = 288
+dropout = 0.4
+pre_linear = false
+res = false
+norm = "ln"
+log2_n_heads = 3

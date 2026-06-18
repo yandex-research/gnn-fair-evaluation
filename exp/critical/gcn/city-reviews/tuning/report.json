@@ -1,0 +1,237 @@
+{
+  "function": "bin.tune.main",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "seed": 0,
+    "function": "bin.critical.main",
+    "n_trials": 100,
+    "sampler": {
+      "n_startup_trials": 25
+    },
+    "space": {
+      "seed": 0,
+      "n_steps": 3000,
+      "patience": 1000,
+      "save_checkpoint": false,
+      "amp_dtype": "bfloat16",
+      "optimizer": {
+        "type": "AdamW",
+        "lr": [
+          "_tune_",
+          "loguniform",
+          3e-05,
+          0.01
+        ],
+        "weight_decay": [
+          "_tune_",
+          "loguniform",
+          0.0001,
+          1.0
+        ]
+      },
+      "data": {
+        "path": "data/city-reviews",
+        "setting": "transductive",
+        "internal_split_name": "RL"
+      },
+      "transform": {
+        "seed": 0,
+        "labels": false,
+        "features": {
+          "num_policy": "quantile-normal",
+          "cat_policy": "one-hot",
+          "impute_first": true
+        }
+      },
+      "model": {
+        "backbone": {
+          "conv": "gcn",
+          "n_blocks": [
+            "_tune_",
+            "int",
+            1,
+            10,
+            1
+          ],
+          "d_hidden": [
+            "_tune_",
+            "int",
+            96,
+            768,
+            32
+          ],
+          "dropout": [
+            "_tune_",
+            "discrete_uniform",
+            0.0,
+            0.5,
+            0.05
+          ],
+          "log2_hidden_dim_multiplier": [
+            "_tune_",
+            "int",
+            0,
+            2,
+            1
+          ],
+          "normalization": [
+            "_tune_",
+            "categorical",
+            [
+              "LayerNorm",
+              "BatchNorm",
+              "Identity"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "best": {
+    "function": "bin.critical.main",
+    "gpus": [
+      "NVIDIA A100-SXM4-80GB"
+    ],
+    "config": {
+      "seed": 0,
+      "n_steps": 3000,
+      "patience": 1000,
+      "save_checkpoint": false,
+      "amp_dtype": "bfloat16",
+      "optimizer": {
+        "type": "AdamW",
+        "lr": 0.00873717517892471,
+        "weight_decay": 0.02626528266326427
+      },
+      "data": {
+        "path": "data/city-reviews",
+        "setting": "transductive",
+        "internal_split_name": "RL"
+      },
+      "transform": {
+        "seed": 0,
+        "labels": false,
+        "features": {
+          "num_policy": "quantile-normal",
+          "cat_policy": "one-hot",
+          "impute_first": true
+        }
+      },
+      "model": {
+        "backbone": {
+          "conv": "gcn",
+          "n_blocks": 8,
+          "d_hidden": 96,
+          "dropout": 0.15000000000000002,
+          "log2_hidden_dim_multiplier": 0,
+          "normalization": "Identity"
+        }
+      }
+    },
+    "n_parameters": 168866,
+    "prediction_type": "probs",
+    "best_step": 54,
+    "metrics": {
+      "train": {
+        "0.0": {
+          "precision": 0.9632180183099732,
+          "recall": 0.9738695937090432,
+          "f1-score": 0.9685145207934504,
+          "support": 12208.0
+        },
+        "1.0": {
+          "precision": 0.7933937823834197,
+          "recall": 0.7296009529481834,
+          "f1-score": 0.7601613403661185,
+          "support": 1679.0
+        },
+        "accuracy": 0.9443364297544466,
+        "macro avg": {
+          "precision": 0.8783059003466964,
+          "recall": 0.8517352733286133,
+          "f1-score": 0.8643379305797845,
+          "support": 13887.0
+        },
+        "weighted avg": {
+          "precision": 0.9426855136566512,
+          "recall": 0.9443364297544466,
+          "f1-score": 0.94332369556572,
+          "support": 13887.0
+        },
+        "cross-entropy": 0.16569530471147753,
+        "roc-auc": 0.9452302144992065,
+        "ap": 0.8288401893676638,
+        "score": 0.8288401893676638
+      },
+      "val": {
+        "0.0": {
+          "precision": 0.9620726061885811,
+          "recall": 0.9702678352035383,
+          "f1-score": 0.9661528423456488,
+          "support": 12209.0
+        },
+        "1.0": {
+          "precision": 0.7695238095238095,
+          "recall": 0.7218582489577129,
+          "f1-score": 0.7449293177627535,
+          "support": 1679.0
+        },
+        "accuracy": 0.9402361751152074,
+        "macro avg": {
+          "precision": 0.8657982078561953,
+          "recall": 0.8460630420806257,
+          "f1-score": 0.8555410800542012,
+          "support": 13888.0
+        },
+        "weighted avg": {
+          "precision": 0.9387942774443305,
+          "recall": 0.9402361751152074,
+          "f1-score": 0.9394078612270801,
+          "support": 13888.0
+        },
+        "cross-entropy": 0.18930841227918888,
+        "roc-auc": 0.926751230833677,
+        "ap": 0.7891832169945069,
+        "score": 0.7891832169945069
+      },
+      "test": {
+        "0.0": {
+          "precision": 0.9582755654505895,
+          "recall": 0.9694797948255915,
+          "f1-score": 0.9638451203126909,
+          "support": 97673.0
+        },
+        "1.0": {
+          "precision": 0.7574253397347221,
+          "recall": 0.6930236021145112,
+          "f1-score": 0.7237947122861587,
+          "support": 13431.0
+        },
+        "accuracy": 0.9360599078341014,
+        "macro avg": {
+          "precision": 0.8578504525926558,
+          "recall": 0.8312516984700513,
+          "f1-score": 0.8438199162994248,
+          "support": 111104.0
+        },
+        "weighted avg": {
+          "precision": 0.9339954370880659,
+          "recall": 0.9360599078341014,
+          "f1-score": 0.9348262098305808,
+          "support": 111104.0
+        },
+        "cross-entropy": 0.1996357240985709,
+        "roc-auc": 0.9197563456803239,
+        "ap": 0.7711907683852662,
+        "score": 0.7711907683852662
+      }
+    },
+    "time": 191.37556412816048,
+    "trial_id": 8,
+    "tuning_time": "0:53:17.495132"
+  },
+  "time": 25579.738188808784,
+  "n_completed_trials": 100
+}

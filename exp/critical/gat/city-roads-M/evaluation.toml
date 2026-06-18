@@ -1,0 +1,37 @@
+function = "bin.critical.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+amp_dtype = "bfloat16"
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 9.484247982045676e-05
+weight_decay = 0.07560219431800869
+
+[base_config.data]
+path = "data/city-roads-M"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+num_policy = "quantile-normal"
+cat_policy = "one-hot"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 4
+d_hidden = 640
+dropout = 0.25
+log2_hidden_dim_multiplier = 1
+normalization = "Identity"
+log2_n_heads = 2
+sep = false

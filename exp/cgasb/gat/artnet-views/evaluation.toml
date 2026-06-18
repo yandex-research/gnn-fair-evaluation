@@ -1,0 +1,37 @@
+function = "bin.cgasb.main"
+n_seeds = 5
+
+[base_config]
+n_steps = 3000
+patience = 1000
+save_checkpoint = false
+amp_dtype = "bfloat16"
+
+[base_config.optimizer]
+type = "AdamW"
+lr = 0.001774486864149759
+weight_decay = 0.48466428453231336
+
+[base_config.data]
+path = "data/artnet-views"
+setting = "transductive"
+internal_split_name = "RL"
+
+[base_config.transform]
+seed = 0
+labels = true
+
+[base_config.transform.features]
+cat_policy = "one-hot"
+frac_policy = "quantile-normal"
+impute_first = true
+
+[base_config.model.backbone]
+conv = "gat"
+n_blocks = 4
+d_hidden = 544
+dropout = 0.15000000000000002
+pre_linear = false
+res = true
+norm = "bn"
+log2_n_heads = 2

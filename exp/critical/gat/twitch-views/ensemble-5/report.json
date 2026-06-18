@@ -1,0 +1,51 @@
+{
+  "function": "bin.ensemble.main",
+  "commit": "b32ecc274b975febfcf6db5eb7ee586e39f03307",
+  "gpus": [
+    "NVIDIA A100-SXM4-80GB"
+  ],
+  "config": {
+    "ensemble_size": 5
+  },
+  "reports": [
+    {
+      "single-model-info": {
+        "function": "bin.critical.main",
+        "config": {
+          "data": {
+            "path": "data/twitch-views"
+          }
+        }
+      },
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "prediction_type": "labels",
+      "metrics": {
+        "train": {
+          "rmse": 1.2928657144941298,
+          "mae": 0.9872766137123108,
+          "r2": 0.7994495630264282,
+          "score": 0.7994495630264282
+        },
+        "val": {
+          "rmse": 1.3981553544290826,
+          "mae": 1.0602858066558838,
+          "r2": 0.76800137758255,
+          "score": 0.76800137758255
+        },
+        "test": {
+          "rmse": 1.3985576471470504,
+          "mae": 1.059146761894226,
+          "r2": 0.7686238884925842,
+          "score": 0.7686238884925842
+        }
+      }
+    }
+  ],
+  "time": 0.018618715927004814
+}
